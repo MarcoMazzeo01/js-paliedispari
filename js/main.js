@@ -2,22 +2,14 @@
 const userWordInput = document.getElementById("userWordInput")
 const paliButton = document.getElementById("paliButton")
 
-const userWord = document.getElementById("userWord"), userWordString = userWord.innerHTML
-const flippedWord = document.getElementById("flippedWord"), flippedWordString = flippedWord.innerHTML
+const userWord = document.getElementById("userWord")
+const flippedWord = document.getElementById("flippedWord")
 const wordResult = document.getElementById("wordResult")
 
-function resetDOM_pali() {
-    flippedWord.innerHTML = flippedWordString
-    userWord.innerHTML = userWordString
-}
-
 paliButton.addEventListener("click",function(){
-    //resetta il contenuto degli elementi usati per mostrare l'esito del gioco
-    resetDOM_pali()
-
     let word = userWordInput.value
     let flippedString = ""
-    userWord.innerHTML += word
+    userWord.innerHTML = `<strong>Parola scelta:</strong> ${word}`
 
     for (i = word.length - 1; i < word.length; i--) {
         
@@ -30,7 +22,7 @@ paliButton.addEventListener("click",function(){
         }
     }
 
-    flippedWord.innerHTML += flippedString
+    flippedWord.innerHTML = `<strong>Parola al contrario:</strong> ${flippedString}` 
 
     //controlla se le word e flippedString sono uguali; se lo sono, allora la parola è palindroma.
     let wordResultFinal = (word === flippedString) ? `<b>${word}</b> è una parola palindroma!` : `<b>${word}</b> non è una parola palindroma... :(`
@@ -46,17 +38,15 @@ const numType = document.getElementById("numType")
 const userNum = document.getElementById("userNum")
 const evenOddButton = document.getElementById("evenOddButton")
 
-const userNumDisplay = document.getElementById("userNumDisplay"), userNumDisplayString = userNumDisplay.innerHTML
-const compNumDisplay = document.getElementById("compNumDisplay"), compNumDisplayString = compNumDisplay.innerHTML
-const numbersSum = document.getElementById("numbersSum"), numbersSumString = numbersSum.innerHTML
-const oddEvenDisplay = document.getElementById("oddEvenDisplay"), oddEvenDisplayString = oddEvenDisplay.innerHTML
+const userNumDisplay = document.getElementById("userNumDisplay")
+const compNumDisplay = document.getElementById("compNumDisplay")
+const numbersSum = document.getElementById("numbersSum")
+const oddEvenDisplay = document.getElementById("oddEvenDisplay")
 
 //funzione che genera un numero a caso compreso tra un minimo e un massimo, entrambi compresi
-function RNG(min,max) {
+function randomInt(min,max) {
     const range = max - min + 1;
-    const randomInt = Math.floor(Math.random() * range) + min;
-  
-    return randomInt;
+    return Math.floor(Math.random() * range) + min;
 }
 
 //controlla che la somma sia divisibile per due senza resto. Se non ha resto, allora ritornerà Pari, altrimenti ritornerà Dispari.
@@ -64,37 +54,23 @@ function oddEvenCheck(num) {
     return (num % 2 == 0) ? "Pari" : "Dispari"
 }
 
-//resetta il contenuto degli elementi usati per mostrare l'esito del gioco
-function resetDOM_oddEven() {
-    userNumDisplay.innerHTML = userNumDisplayString
-    compNumDisplay.innerHTML = compNumDisplayString
-    numbersSum.innerHTML = numbersSumString
-    oddEvenDisplay.innerHTML = ""
-}
 
 evenOddButton.addEventListener("click",function(){
 
-    //resetta elementi ogni volta che si preme il pulsante
-    resetDOM_oddEven()
-
     //genero un numero casuale per il computer e prendo il valore inserito dall'utente, mostrandoli nel DOM
-    let compNum = RNG(1,5)
+    let compNum = randomInt(1,5)
     let userNumValue = parseInt(userNum.value)
-    userNumDisplay.innerHTML += userNumValue
-    compNumDisplay.innerHTML += compNum
+    userNumDisplay.innerHTML = `<strong>Il tuo numero:</strong> ${userNumValue}`
+    compNumDisplay.innerHTML = `<strong>Numero del computer:</strong> ${compNum}`
 
     //sommo i due numeri e controllo se la somma è pari o dispari
     let total = compNum + userNumValue
     let result =  oddEvenCheck(total)
-    numbersSum.innerHTML += total + ` (${result})`
+    numbersSum.innerHTML = `<strong>Somma:</strong> ` + total + ` (${result})`
     
     //infine, controllo se il valore restituito da oddEvenCheck() è uguale a quello selezionato dall'utente, Pari o Dispari
-    if (numType.value == result) {
-        oddEvenDisplay.innerHTML = "Hai vinto!"
-    } else {
-        oddEvenDisplay.innerHTML = "Hai perso!"
-    }
-
+    let oddEvenDisplayString = (numType.value == result) ? "Hai vinto!" : "Hai perso... :("
+    oddEvenDisplay.innerHTML = oddEvenDisplayString
     
 
 
