@@ -25,7 +25,7 @@ paliButton.addEventListener("click",function(){
     flippedWord.innerHTML = `<strong>Parola al contrario:</strong> ${flippedString}` 
 
     //controlla se le word e flippedString sono uguali; se lo sono, allora la parola è palindroma.
-    let wordResultFinal = (word === flippedString) ? `<b>${word}</b> è una parola palindroma!` : `<b>${word}</b> non è una parola palindroma... :(`
+    let wordResultFinal = (word.toLowerCase() === flippedString.toLowerCase()) ? `<b>${word}</b> è una parola palindroma!` : `<b>${word}</b> non è una parola palindroma... :(`
     wordResult.innerHTML = wordResultFinal
 
 })
@@ -71,7 +71,5 @@ evenOddButton.addEventListener("click",function(){
     //infine, controllo se il valore restituito da oddEvenCheck() è uguale a quello selezionato dall'utente, Pari o Dispari
     let oddEvenDisplayString = (numType.value == result) ? "Hai vinto!" : "Hai perso... :("
     oddEvenDisplay.innerHTML = oddEvenDisplayString
-    
-
 
 })
