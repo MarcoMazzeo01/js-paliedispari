@@ -1,3 +1,49 @@
+// ! PALINDROMO CHECK
+const userWordInput = document.getElementById("userWordInput")
+const paliButton = document.getElementById("paliButton")
+
+const userWord = document.getElementById("userWord"), userWordString = userWord.innerHTML
+const flippedWord = document.getElementById("flippedWord"), flippedWordString = flippedWord.innerHTML
+const wordResult = document.getElementById("wordResult")
+
+function resetDOM_pali() {
+    flippedWord.innerHTML = flippedWordString
+    userWord.innerHTML = userWordString
+}
+
+paliButton.addEventListener("click",function(){
+    //resetta il contenuto degli elementi usati per mostrare l'esito del gioco
+    resetDOM_pali()
+
+    let word = userWordInput.value
+    let flippedString = ""
+    userWord.innerHTML += word
+
+    for (i = word.length - 1; i < word.length; i--) {
+        
+        //componi la parola al contrario
+        flippedString += word[i]
+
+        //appena raggiunta la lettera iniziale, il loop si interrompe
+        if (i == 0) {
+            break
+        }
+    }
+
+    flippedWord.innerHTML += flippedString
+
+    //controlla se le word e flippedString sono uguali; se lo sono, allora la parola è palindroma.
+
+    if (word === flippedString) {
+        wordResult.innerHTML = `<b>${word}</b> è una parola palindroma!`
+    } else {
+        wordResult.innerHTML = `<b>${word}</b> non è una parola palindroma... :(`
+    }
+})
+
+
+
+
 // ! PARI E DISPARI
 const numType = document.getElementById("numType")
 const userNum = document.getElementById("userNum")
@@ -26,7 +72,7 @@ function oddEvenCheck(num) {
 }
 
 //resetta il contenuto degli elementi usati per mostrare l'esito del gioco
-function resetDOM() {
+function resetDOM_oddEven() {
     userNumDisplay.innerHTML = userNumDisplayString
     compNumDisplay.innerHTML = compNumDisplayString
     numbersSum.innerHTML = numbersSumString
@@ -36,7 +82,7 @@ function resetDOM() {
 evenOddButton.addEventListener("click",function(){
 
     //resetta elementi ogni volta che si preme il pulsante
-    resetDOM()
+    resetDOM_oddEven()
 
     //genero un numero casuale per il computer e prendo il valore inserito dall'utente, mostrandoli nel DOM
     let compNum = RNG(1,5)
