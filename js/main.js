@@ -61,11 +61,7 @@ function RNG(min,max) {
 
 //controlla che la somma sia divisibile per due senza resto. Se non ha resto, allora ritornerà Pari, altrimenti ritornerà Dispari.
 function oddEvenCheck(num) {
-    if (num % 2 == 0) {
-        return "Pari"
-    } else {
-        return "Dispari"
-    }
+    return (num % 2 == 0) ? "Pari" : "Dispari"
 }
 
 //resetta il contenuto degli elementi usati per mostrare l'esito del gioco
