@@ -42,17 +42,17 @@
         <section id="pariDispari">
             <h2>Pari e Dispari</h2>
             <p>Scegli tra le due opzioni e inserisci un numero tra 1 e 5. Il computer genererà un numero casuale che verrà sommato a quello scelto da te. Vinci se il numero risultante è pari o dispari come specificato all'inizio.</p>
-            <select name="" id="">
-                <option value="even">Pari</option>
-                <option value="odd">Dispari</option>
+            <select name="" id="numType">
+                <option value="Pari">Pari</option>
+                <option value="Dispari">Dispari</option>
             </select>
-            <input type="number" name="userNum" id="userNum" max="5" min="1">
+            <input type="number" name="userNum" id="userNum" value="1" max="5" min="1">
             <button type="button" id="evenOddButton">Controlla!</button>
 
-            <p><strong>Il tuo numero: </strong></p>
-            <p id="computerNum"><strong>Numero del computer: </strong></p>
+            <p id="userNumDisplay"><strong>Il tuo numero: </strong></p>
+            <p id="compNumDisplay"><strong>Numero del computer: </strong></p>
             <p id="numbersSum"><strong>Somma: </strong></p>
-            <p id="oddEvenResult"></p>
+            <p id="oddEvenDisplay"></p>
         </section>
 
     </div>
