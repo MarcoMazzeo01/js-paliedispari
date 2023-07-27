@@ -33,12 +33,9 @@ paliButton.addEventListener("click",function(){
     flippedWord.innerHTML += flippedString
 
     //controlla se le word e flippedString sono uguali; se lo sono, allora la parola è palindroma.
+    let wordResultFinal = (word === flippedString) ? `<b>${word}</b> è una parola palindroma!` : `<b>${word}</b> non è una parola palindroma... :(`
+    wordResult.innerHTML = wordResultFinal
 
-    if (word === flippedString) {
-        wordResult.innerHTML = `<b>${word}</b> è una parola palindroma!`
-    } else {
-        wordResult.innerHTML = `<b>${word}</b> non è una parola palindroma... :(`
-    }
 })
 
 
